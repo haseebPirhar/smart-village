@@ -1,0 +1,269 @@
+/* General Styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+/* Header Styles */
+header {
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  padding: 15px 5%;
+  gap: 292px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Logo */
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Menu Button */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+/* Navigation Menu */
+nav {
+  display: flex;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+nav ul li {
+  padding: 10px 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+nav ul li a:hover {
+  color: #f4b400;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  text-align: center;
+  color: white;
+  height: 86vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 5%;
+}
+
+#bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background: rgba(0, 0, 0, 0.5); */
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Features Section */
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 20px;
+  padding: 0 5%;
+}
+
+.feature {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  width: min(90%, 250px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.features .feature p {
+  color: black;
+  font-weight: 600;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  header {
+    padding: 15px 3%;
+  }
+
+  .hero {
+    height: auto;
+    padding: 10% 3%;
+  }
+
+  .features {
+    gap: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Show menu button */
+  .menu-toggle {
+    display: block;
+  }
+
+  /* Hide default menu */
+  nav {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    width: 200px;
+  }
+
+  nav ul {
+    flex-direction: column;
+  }
+
+  nav ul li {
+    text-align: center;
+    padding: 15px 10px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  nav ul li a {
+    color: black;
+  }
+
+  /* Hero Section Adjustments */
+  .hero {
+    padding: 15% 5%;
+  }
+
+  .features {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    font-size: 1.2rem;
+  }
+
+  .menu-toggle {
+    font-size: 1.5rem;
+  }
+
+  .hero-content {
+    font-size: 0.9rem;
+  }
+
+  .feature {
+    width: 90%;
+    padding: 15px;
+  }
+}
+
+
+
+
+/* //____________________________________________________________________________________________ */
+
+
+/* __________________________________________________________________________________________________ */
+body {
+    font-family: Arial, sans-serif;
+    background: #e3f2fd;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 50%;
+    margin: 100px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+input {
+    padding: 10px;
+    width: 70%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 15px;
+    background: #0288d1;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0277bd;
+}
+
+.weather-info {
+    font-size: 18px;
+    margin-top: 20px;
+}

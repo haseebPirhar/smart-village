@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Updates</title>
+    <link rel="stylesheet" href="/app/style/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Weather Updates</h1>
+        <div class="input-group">
+            <input type="text" id="cityInput" placeholder="Enter city name">
+            <button id="getWeather">Get Weather</button>
+        </div>
+        <div class="weather-info">
+            <h2 id="cityName"></h2>
+            <p>Temperature: <span id="temperature">--</span>°C</p>
+            <p>Condition: <span id="condition">--</span></p>
+            <p>windSpeed: <span id="windSpeed">--</span></p>
+        </div>
+    </div>
+    <script src="/app/Java/app.js"></script>
+</body>
+</html>

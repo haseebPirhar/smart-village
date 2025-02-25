@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: scale(1.02);
+        }
+        .card img {
+            width: 100%;
+            height: auto;
+        }
+        .card-content {
+            padding: 20px;
+        }
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .card-description {
+            font-size: 1rem;
+            color: #666;
+        }
+        .links {
+            margin-top: 10px;
+        }
+        .links a {
+            display: inline-block;
+            margin-right: 10px;
+            text-decoration: none;
+            color: #007bff;
+        }
+        .links a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            .card {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <img src="https://odphp.health.gov/sites/default/files/2023-03/Child-doctor-5-10_157326614.jpg" alt="Doctor with Child">
+            <div class="card-content">
+                <h2 class="card-title">Make the Most of Your Child’s Visit to the Doctor</h2>
+                <p class="card-description">Children ages 5 to 10 years need to see the doctor for a checkup once a year to ensure proper health and development.</p>
+                <div class="links">
+                    <a href="https://odphp.health.gov/myhealthfinder/doctor-visits/regular-checkups/make-most-your-childs-visit-doctor-ages-5-10-years" target="_blank">Read More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

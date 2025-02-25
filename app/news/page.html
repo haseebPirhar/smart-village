@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Fetcher</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="max-w-4xl mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg">
+        <h1 class="text-3xl font-bold text-center text-blue-600 mb-4">News Fetcher</h1>
+        <select id="category" class="block w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-blue-400" onchange="fetchNews()">
+            <option value="local">Local News</option>
+            <option value="politics">Politics</option>
+            <option value="sports">Sports</option>
+            <option value="technology">Technology</option>
+            <option value="business">Business</option>
+        </select>
+        <div id="loader" class="hidden text-center text-gray-500 mt-4">Loading...</div>
+        <div id="news-container" class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6"></div>
+    </div>
+
+    <script>
+        const API_URL = "http://localhost:3000/api/news?category=politics";
+
+        async function fetchNews() {
+            const category = document.getElementById("category").value;
+            const newsContainer = document.getElementById("news-container");
+            const loader = document.getElementById("loader");
+            
+            loader.classList.remove("hidden");
+            newsContainer.innerHTML = "";
+            
+            try {
+                const response = await fetch(`${API_URL}?category=${category}`);
+                const data = await response.json();
+                loader.classList.add("hidden");
+                
+                if (!data.articles || data.articles.length === 0) {
+                    newsContainer.innerHTML = `<p class='text-center text-gray-500'>No news found.</p>`;
+                    return;
+                }
+                
+                newsContainer.innerHTML = data.articles.map(news => `
+                   <div class="bg-white p-4 rounded-lg shadow-md">
+                   <img src="${news.image_url || 'https://via.placeholder.com/400'}" class="w-full h-40 object-cover rounded" alt="News Image" />
+                   <h2 class="text-xl font-bold mt-3">${news.title}</h2>
+                   <p class="text-sm text-gray-600">${news.description || "No description available."}</p>
+                   <a href="${news.link}" target="_blank" class="text-blue-500 mt-2 inline-block">Read More</a>
+                  </div>`).join('');
+
+            } catch (error) {
+                console.error("Error fetching news:", error);
+                newsContainer.innerHTML = `<p class='text-center text-red-500'>Failed to load news.</p>`;
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', fetchNews);
+    </script>
+</body>
+</html>

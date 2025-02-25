@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remote Jobs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+    <div class="max-w-4xl mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg">
+        <h1 class="text-3xl font-bold text-center text-blue-600 mb-4">Remote Jobs</h1>
+        
+        <!-- Search Bar -->
+        <div class="flex items-center justify-center mb-4">
+            <input type="text" id="search" placeholder="Search jobs..." class="w-full p-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <button onclick="fetchJobs()" class="ml-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">Search</button>
+        </div>
+        
+        <!-- Loading Indicator -->
+        <div id="loader" class="text-center text-gray-500">Loading jobs...</div>
+        
+        <!-- Jobs List -->
+        <div id="jobs-list" class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6"></div>
+    </div>
+
+    <script>
+        async function fetchJobs() {
+            const jobsList = document.getElementById("jobs-list");
+            const loader = document.getElementById("loader");
+            const searchQuery = document.getElementById("search").value.toLowerCase();
+            
+            loader.style.display = "block";
+            jobsList.innerHTML = "";
+            
+            try {
+                const response = await fetch("https://remoteok.com/api", {
+                    method: "GET",
+                    headers: { "Accept": "application/json" }
+                });
+                const data = await response.json();
+                loader.style.display = "none";
+                
+                if (!data || data.length === 0) {
+                    jobsList.innerHTML = "<p class='text-center text-gray-500'>No jobs found.</p>";
+                    return;
+                }
+                
+                const jobs = data.slice(1).filter(job =>
+                    job.position.toLowerCase().includes(searchQuery) ||
+                    (job.company && job.company.toLowerCase().includes(searchQuery))
+                );
+                
+                if (jobs.length === 0) {
+                    jobsList.innerHTML = "<p class='text-center text-gray-500'>No matching jobs found.</p>";
+                    return;
+                }
+                
+                jobsList.innerHTML = jobs.map(job => `
+                    <div class="bg-white p-4 rounded-lg shadow-md border">
+                        <h2 class="text-xl font-bold">${job.position}</h2>
+                        <p class="text-gray-600"><strong>Company:</strong> ${job.company || "N/A"}</p>
+                        <p class="text-gray-500"><strong>Location:</strong> ${job.location || "Remote"}</p>
+                        <p class="text-sm text-gray-700">${job.description ? job.description.substring(0, 150) + "..." : "No description available."}</p>
+                        <a href="${job.url}" target="_blank" class="text-blue-500 mt-2 inline-block">View Job</a>
+                    </div>
+                `).join('');
+            } catch (error) {
+                console.error("Error fetching jobs:", error);
+                jobsList.innerHTML = "<p class='text-center text-red-500'>Failed to load jobs.</p>";
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', fetchJobs);
+    </script>
+</body>
+</html>

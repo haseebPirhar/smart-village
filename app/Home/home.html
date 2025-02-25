@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Gaon - Home</title>
+    <link rel="stylesheet" href="/app/style/style.css" />
+    <script defer src="/app/Java/app.js"></script>
+  </head>
+  <body>
+    <!-- Header with Responsive Navbar -->
+    <header>
+      <div class="logo"><img src="/app/public/app/logo.jpg" alt="logo" width="100px"></div>
+      <button class="menu-toggle" id="menuBtn">☰</button>
+      <nav id="navMenu" class="hidden">
+        <ul class="nav-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="/app/Weather/page.html">Weather</a></li>
+          <li><a href="/app/news/page.html">News</a></li>
+          <li><a href="/app/agriculture/page.html">Agriculture</a></li>
+          <li><a href="/app/health/page.html">Health</a></li>
+          <li><a href="/app/jobs/page.html">Jobs</a></li>
+          <li><a href="/app/complaint/page.html">Complaint</a></li>
+          <li><a href="/app/register.html">Register</a></li>
+          <li><a href="/app/register.html">Login</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <video autoplay muted loop id="bg-video">
+            <source src="/app/public/app/village.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        
+        <div class="overlay"></div>
+    
+        <div class="hero-content">
+            <h2>Welcome to Smart Gaon</h2>
+            <p>Stay updated with weather, news, jobs, and more!</p>
+            <a href="#" class="btn">Explore Now</a>
+
+            <!-- Features Section Inside Hero Section -->
+            <section class="features">
+              <div class="feature">
+                <h3><a href="/app/Weather/page.html">Weather Updates</a></h3>
+                <p>Check live weather updates in your area.</p>
+              </div>
+              <div class="feature">
+                <h3><a href="/app/news/page.html">Local News</a></h3>
+                <p>Get the latest news from your village.</p>
+              </div>
+              <div class="feature">
+                <h3><a href="/app/agriculture/page.html">Agriculture Tips</a></h3>
+                <p>Best farming techniques for higher yield.</p>
+              </div>
+              <div class="feature">
+                <h3><a href="/app/health/page.html">Health</a></h3>
+                <p>Make the Most of Your Child’s Visit to the Doctor</p>
+              </div>
+              <div class="feature">
+                <h3><a href="/app/jobs/page.html">Jobs</a></h3>
+                <p>Get the latest Jobs from your village.</p>
+              </div>
+              <div class="feature">
+                <h3><a href="/app/complaint/page.html">Complaints</a></h3>
+                <p>Get the latest Jobs from your village.</p>
+              </div>
+            </section>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+      <h2>Discover More!</h2>
+      <p>© 2025 Smart Gaon. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
